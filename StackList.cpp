@@ -19,18 +19,47 @@ StackList::~StackList(){
     std::cerr << "\n";
 }
 
-StackList::void push(int num){
-
+void StackList::push(std::string data){
+	Node *tmp = new Node(data);
+	tmp->setNext(head);
+	head = tmp;
 }
 
-StackList::int pop(){ // remove and return the top item
+int StackList::pop(){ // remove and return the top item
+	Node *walker;
+	walker = head;
+	if (this->is_empty() == true)
+	{
+		throw STACK_ERR_EMPTY;
+	}
 
+	head = head->getNext();
+	return head->getData();
 }
 
-StackList::int top(){ // return but do not remove the top item
-
+std::string StackList::top(){ // return but do not remove the top item
+	if (this->is_empty() == true)
+	{
+		throw STACK_ERR_EMPTY;
+	}
+	return head->getData();
 }
 
 StackList::bool is_empty(){
     return head == nullptr;
+}
+
+std::string StackList::toString() // helper function for testing
+{
+	Node *tmp = this->head;
+	std::string result = "";
+	result = result + "head-->";
+	while (tmp != nullptr)
+	{
+		result = result + tmp->getData();
+		result = result + "-->";
+		tmp = tmp->getNext();
+	}
+	result = result + "nullptr";
+	return result;
 }
