@@ -13,7 +13,8 @@ public:
 	StackList();
 	~StackList();
 	void push(std::string data);
-	int pop(); // remove and return the top item
-	int top(); // return but do not remove the top item
+	std::string pop(); // remove and return the top item
+	std::string top(); // return but do not remove the top item
 	bool is_empty();
+	std::string toString();
 };

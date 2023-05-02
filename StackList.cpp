@@ -25,7 +25,7 @@ void StackList::push(std::string data){
 	head = tmp;
 }
 
-int StackList::pop(){ // remove and return the top item
+std::string StackList::pop(){ // remove and return the top item
 	Node *walker;
 	walker = head;
 	if (this->is_empty() == true)
@@ -45,7 +45,7 @@ std::string StackList::top(){ // return but do not remove the top item
 	return head->getData();
 }
 
-StackList::bool is_empty(){
+bool StackList::is_empty(){
     return head == nullptr;
 }
 
